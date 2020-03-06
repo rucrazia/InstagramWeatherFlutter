@@ -5,7 +5,7 @@ import 'package:InstagramWeatherFlutter/src/theme/color/light_color.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key key}) : super(key: key);
-
+  final myController = TextEditingController();
   double width;
 
   Widget _header(BuildContext context) {
@@ -55,26 +55,39 @@ class HomePage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Text(
-                                "Search courses",
+                                "지역을 입력해주세요.",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w500),
                               ),
-                              Icon(
-                                Icons.search,
-                                color: Colors.white,
-                                size: 30,
+                              IconButton(
+                                icon: Icon(Icons.search),
+                                tooltip: 'Search',
+                                onPressed: () => showMessage('IconButton'),
+                              ),
+                              FloatingActionButton(
+                                child:Icon(Icons.print),
+                                onPressed: () => showDialog(
+                                    context:context,
+                                    builder:(context) {
+                                      return AlertDialog(content: Text(myController.text));
+                                    }
+                                )
                               )
                             ],
                           ),
-                          SizedBox(height: 20),
-                          Text(
-                            "Type Something...",
+                          SizedBox(height: 0), //여백
+                          TextField(
+                            controller: myController,
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: '샌프란시스코'
+                            ),
                             style: TextStyle(
                                 color: Colors.white54,
                                 fontSize: 30,
-                                fontWeight: FontWeight.w500),
-                          )
+                                fontWeight: FontWeight.w500)
+                          ),
                         ],
                       )))
             ],
@@ -133,8 +146,8 @@ class HomePage extends StatelessWidget {
                 chipText1: "Find the right degree for you",
                 chipText2: "8 Cources",
                 isPrimaryCard: true,
-                imgPath:
-                    "https://jshopping.in/images/detailed/591/ibboll-Fashion-Mens-Optical-Glasses-Frames-Classic-Square-Wrap-Frame-Luxury-Brand-Men-Clear-Eyeglasses-Frame.jpg"),
+                imgPath: "images/샌프란시스코0_0.jpg"
+            ),
             _card(
                 primary: Colors.white,
                 chipColor: LightColor.seeBlue,
@@ -242,6 +255,10 @@ class HomePage extends StatelessWidget {
         decoration: BoxDecoration(
             color: primary.withAlpha(200),
             borderRadius: BorderRadius.all(Radius.circular(20)),
+            image: DecorationImage(
+              image: ExactAssetImage(imgPath),
+              fit: BoxFit.cover,
+            ),
             boxShadow: <BoxShadow>[
               BoxShadow(
                   offset: Offset(0, 5),
@@ -254,13 +271,6 @@ class HomePage extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                 backWidget,
-                Positioned(
-                    top: 20,
-                    left: 10,
-                    child: CircleAvatar(
-                      backgroundColor: Colors.grey.shade300,
-                      backgroundImage: NetworkImage(imgPath),
-                    )),
                 Positioned(
                   bottom: 10,
                   left: 10,
@@ -319,6 +329,7 @@ class HomePage extends StatelessWidget {
 
   Widget _decorationContainerA(Color primary, double top, double left) {
     return Stack(
+      /*
       children: <Widget>[
         Positioned(
           top: top,
@@ -336,11 +347,13 @@ class HomePage extends StatelessWidget {
               borderColor: Colors.white),
         )
       ],
+      */
     );
   }
 
   Widget _decorationContainerB(Color primary, double top, double left) {
     return Stack(
+      /*
       children: <Widget>[
         Positioned(
           top: -65,
@@ -359,6 +372,8 @@ class HomePage extends StatelessWidget {
                 child: CircleAvatar(
                     backgroundColor: LightColor.lightseeBlue, radius: 40)))
       ],
+
+       */
     );
   }
 
@@ -529,4 +544,9 @@ class HomePage extends StatelessWidget {
           ),
         )));
   }
+
+  void showMessage(String msg) {
+    debugPrint('flag');
+  }
+
 }
