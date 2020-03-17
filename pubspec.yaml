@@ -25,11 +25,13 @@ dependencies:
   cupertino_icons: ^0.1.2
   english_words: ^3.1.0
   toast: ^0.1.5
+  gender_selector: ^1.0.6
 
   flutter_localizations:
     sdk: flutter
   flutter_rounded_date_picker: 1.0.0
   flutter_datetime_picker: 1.2.5
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

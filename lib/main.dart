@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:InstagramWeatherFlutter/src/pages/image_list_page.dart';
 import 'src/pages/home_page.dart';
+import 'src/pages/main_page.dart';
 import 'src/theme/theme.dart';
-import 'src/pages/main_home.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_rounded_date_picker/rounded_picker.dart';
 
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       ],
 
       theme: AppTheme.lightTheme,
-      home: MainHome(),
+      home: MainPage(),
       debugShowCheckedModeBanner: false,
 
       //home: ImageListState(),
